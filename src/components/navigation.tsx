@@ -3,22 +3,25 @@ import { Link, useLocation } from "react-router-dom"
 import { Menu, X, Play, Palette, User, Phone, HelpCircle, Briefcase, FileText, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageSelector } from "@/components/language-selector"
+import { useLanguage } from "@/contexts/language-context"
 import { cn } from "@/lib/utils"
 
 const navigation = [
-  { name: "Home", href: "/", icon: Play },
-  { name: "Portfolio", href: "/portfolio", icon: Palette },
-  { name: "Services", href: "/services", icon: Briefcase },
-  { name: "About", href: "/about", icon: User },
-  { name: "Testimonials", href: "/testimonials", icon: Star },
-  { name: "Blog", href: "/blog", icon: FileText },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
-  { name: "Contact", href: "/contact", icon: Phone },
+  { name: "nav.home", href: "/", icon: Play },
+  { name: "nav.portfolio", href: "/portfolio", icon: Palette },
+  { name: "nav.services", href: "/services", icon: Briefcase },
+  { name: "nav.about", href: "/about", icon: User },
+  { name: "nav.testimonials", href: "/testimonials", icon: Star },
+  { name: "nav.blog", href: "/blog", icon: FileText },
+  { name: "nav.faq", href: "/faq", icon: HelpCircle },
+  { name: "nav.contact", href: "/contact", icon: Phone },
 ]
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
+  const { t } = useLanguage()
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -51,24 +54,26 @@ export function Navigation() {
                   )}
                 >
                   <Icon className="h-4 w-4" />
-                  <span>{item.name}</span>
+                  <span>{t(item.name)}</span>
                 </Link>
               )
             })}
           </div>
 
           {/* Desktop CTA & Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
+            <LanguageSelector />
             <ThemeToggle />
             <Link to="/contact">
               <Button className="bg-gradient-youtube hover:shadow-glow transition-all duration-300 font-medium">
-                Hire Me Now
+                {t("nav.hire")}
               </Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSelector />
             <ThemeToggle />
             <Button
               variant="ghost"
@@ -103,14 +108,14 @@ export function Navigation() {
                   )}
                 >
                   <Icon className="h-5 w-5" />
-                  <span>{item.name}</span>
+                  <span>{t(item.name)}</span>
                 </Link>
               )
             })}
             <div className="pt-4 px-4">
               <Link to="/contact">
                 <Button className="w-full bg-gradient-youtube hover:shadow-glow transition-all duration-300 font-medium">
-                  Hire Me Now
+                  {t("nav.hire")}
                 </Button>
               </Link>
             </div>
