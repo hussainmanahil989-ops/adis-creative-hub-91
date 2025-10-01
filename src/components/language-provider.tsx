@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 
 type Language = "en" | "es" | "fr" | "ar" | "zh" | "de" | "it" | "pt" | "ru" | "ja"
 
