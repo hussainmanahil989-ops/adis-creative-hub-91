@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom"
 import { Menu, X, Play, Palette, User, Phone, HelpCircle, Briefcase, FileText, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageToggle } from "@/components/language-toggle"
 import { cn } from "@/lib/utils"
 
 const navigation = [
@@ -60,7 +59,6 @@ export function Navigation() {
 
           {/* Desktop CTA & Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
-            <LanguageToggle />
             <ThemeToggle />
             <Link to="/contact">
               <Button className="bg-gradient-youtube hover:shadow-glow transition-all duration-300 font-medium">
@@ -71,7 +69,6 @@ export function Navigation() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <LanguageToggle />
             <ThemeToggle />
             <Button
               variant="ghost"

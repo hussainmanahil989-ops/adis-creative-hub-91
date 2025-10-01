@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/components/theme-provider";
-import { LanguageProvider } from "@/components/language-provider";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
@@ -33,9 +32,8 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <ThemeProvider defaultTheme="light" storageKey="adil-portfolio-theme">
-        <LanguageProvider defaultLanguage="en" storageKey="adil-portfolio-language">
-          <TooltipProvider>
-            <ErrorBoundary>
+        <TooltipProvider>
+          <ErrorBoundary>
             <Toaster />
             <Sonner />
             <BrowserRouter>
@@ -61,9 +59,8 @@ const App = () => (
               <FloatingWhatsApp />
               <AnalyticsConsentModal />
             </BrowserRouter>
-            </ErrorBoundary>
-          </TooltipProvider>
-        </LanguageProvider>
+          </ErrorBoundary>
+        </TooltipProvider>
       </ThemeProvider>
     </HelmetProvider>
   </QueryClientProvider>
