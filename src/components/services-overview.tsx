@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { fetchServices } from "@/utils/api"
 import { Service } from "@/types"
 import { ServiceCardSkeleton } from "@/components/skeleton-loader"
+import { useLanguage } from "@/contexts/language-context"
 
 const iconMap: Record<string, LucideIcon> = {
   Palette,
@@ -15,6 +16,7 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 export function ServicesOverview() {
+  const { t } = useLanguage()
   const [services, setServices] = useState<Service[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -50,10 +52,10 @@ export function ServicesOverview() {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Services That <span className="text-gradient-youtube">Drive Results</span>
+            {t("services.title")} <span className="text-gradient-youtube">{t("services.titleGradient")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Professional design services tailored to grow your business and increase conversions.
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -82,7 +84,7 @@ export function ServicesOverview() {
                         {service.popular && (
                           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                             <span className="bg-gradient-youtube text-white px-4 py-1 rounded-full text-sm font-medium whitespace-nowrap">
-                              Most Popular
+                              {t("services.popular")}
                             </span>
                           </div>
                         )}
@@ -105,7 +107,7 @@ export function ServicesOverview() {
                         </div>
                         
                         <div className="text-2xl font-bold text-foreground mb-6">
-                          From ${Math.min(...service.pricingTiers.map(t => t.price))}
+                          {t("services.from")} ${Math.min(...service.pricingTiers.map(t => t.price))}
                         </div>
                         
                         <Button 
@@ -115,7 +117,7 @@ export function ServicesOverview() {
                               : 'variant-outline border-youtube-red text-youtube-red hover:bg-youtube-red hover:text-white'
                           } transition-all duration-300`}
                         >
-                          Get Started
+                          {t("services.cta")}
                         </Button>
                       </div>
                     </div>
@@ -132,16 +134,16 @@ export function ServicesOverview() {
         {/* Bottom CTA */}
         <div className="text-center mt-16 p-8 bg-gradient-subtle rounded-2xl">
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Need a Custom Package?
+            {t("services.custom.title")}
           </h3>
           <p className="text-muted-foreground mb-6">
-            Let's discuss your project and create a tailored solution that fits your needs and budget.
+            {t("services.custom.subtitle")}
           </p>
           <Button 
             size="lg"
             className="bg-gradient-youtube hover:shadow-glow transition-all duration-300 font-semibold px-8 py-4"
           >
-            Schedule Free Consultation
+            {t("services.custom.cta")}
           </Button>
         </div>
       </div>

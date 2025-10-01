@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
+import { useLanguage } from "@/contexts/language-context"
 
 const footerLinks = {
   services: [
@@ -39,6 +40,8 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const { t } = useLanguage()
+  
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Newsletter section */}
@@ -46,19 +49,19 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
+              <h3 className="text-2xl font-bold mb-2">{t("footer.newsletter.title")}</h3>
               <p className="text-primary-foreground/80">
-                Get free design tips, latest trends, and exclusive offers delivered to your inbox.
+                {t("footer.newsletter.subtitle")}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Input 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder={t("footer.newsletter.placeholder")}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
               />
               <Button className="bg-gradient-youtube hover:shadow-glow whitespace-nowrap">
-                Subscribe Now
+                {t("footer.newsletter.cta")}
               </Button>
             </div>
           </div>
@@ -77,7 +80,7 @@ export function Footer() {
               <span className="font-bold text-xl">Adil GFX</span>
             </Link>
             <p className="text-primary-foreground/80 mb-6 text-sm">
-              Professional designer helping brands and YouTubers grow through premium visual content.
+              {t("footer.brand.description")}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
@@ -99,7 +102,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
+            <h4 className="font-semibold mb-4">{t("footer.services.title")}</h4>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -116,7 +119,7 @@ export function Footer() {
 
           {/* Explore */}
           <div>
-            <h4 className="font-semibold mb-4">Explore</h4>
+            <h4 className="font-semibold mb-4">{t("footer.explore.title")}</h4>
             <ul className="space-y-2">
               {footerLinks.explore.map((link) => (
                 <li key={link.name}>
@@ -133,7 +136,7 @@ export function Footer() {
 
           {/* Support */}
           <div>
-            <h4 className="font-semibold mb-4">Support</h4>
+            <h4 className="font-semibold mb-4">{t("footer.support.title")}</h4>
             <ul className="space-y-2">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -150,7 +153,7 @@ export function Footer() {
 
           {/* Business */}
           <div>
-            <h4 className="font-semibold mb-4">Business</h4>
+            <h4 className="font-semibold mb-4">{t("footer.business.title")}</h4>
             <ul className="space-y-2">
               {footerLinks.business.map((link) => (
                 <li key={link.name}>
@@ -192,16 +195,16 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/80 text-sm">
-              © 2025 GFX by Adi. All rights reserved.
+              {t("footer.copyright")}
             </p>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <a href="mailto:hello@adilgfx.com" className="flex items-center space-x-2 text-primary-foreground/80 hover:text-white text-sm transition-smooth">
                 <Mail className="h-4 w-4" />
-                <span>hello@adilgfx.com</span>
+                <span>{t("footer.contact.email")}</span>
               </a>
               <a href="https://wa.me/1234567890" className="flex items-center space-x-2 text-primary-foreground/80 hover:text-white text-sm transition-smooth">
                 <Phone className="h-4 w-4" />
-                <span>WhatsApp</span>
+                <span>{t("footer.contact.whatsapp")}</span>
               </a>
             </div>
           </div>

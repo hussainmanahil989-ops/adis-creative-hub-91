@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
 
 const testimonials = [
   {
@@ -28,16 +29,18 @@ const testimonials = [
 ]
 
 export function TestimonialsSection() {
+  const { t } = useLanguage()
+  
   return (
     <section className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            What Clients <span className="text-gradient-youtube">Say</span>
+            {t("testimonials.title")} <span className="text-gradient-youtube">{t("testimonials.titleGradient")}</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real feedback from real clients who saw real results.
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
@@ -83,15 +86,15 @@ export function TestimonialsSection() {
           <div className="inline-flex items-center space-x-8 text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Star className="h-5 w-5 text-youtube-red fill-current" />
-              <span className="font-medium">5.0 on Fiverr</span>
+              <span className="font-medium">{t("testimonials.fiverr")}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Star className="h-5 w-5 text-youtube-red fill-current" />
-              <span className="font-medium">Top Rated on Upwork</span>
+              <span className="font-medium">{t("testimonials.upwork")}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Star className="h-5 w-5 text-youtube-red fill-current" />
-              <span className="font-medium">500+ Happy Clients</span>
+              <span className="font-medium">{t("testimonials.clients")}</span>
             </div>
           </div>
         </div>

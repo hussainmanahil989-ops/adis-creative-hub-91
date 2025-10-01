@@ -1,8 +1,10 @@
 import { ArrowRight, Play, Star } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/contexts/language-context"
 
 export function HeroSection() {
+  const { t } = useLanguage()
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -20,21 +22,21 @@ export function HeroSection() {
           <div className="inline-flex items-center space-x-2 bg-card border border-border rounded-full px-4 py-2 shadow-small">
             <Star className="h-4 w-4 text-youtube-red fill-current" />
             <span className="text-sm font-medium text-muted-foreground">
-              Trusted by 500+ YouTubers & Brands
+              {t("hero.badge")}
             </span>
           </div>
 
           {/* Main headline */}
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
-              Transform Your Brand with
+              {t("hero.title")}
               <span className="text-gradient-youtube block">
-                Premium Designs
+                {t("hero.titleGradient")}
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Professional logo design, YouTube thumbnails, and video editing that converts viewers into loyal customers. 
-              <span className="text-foreground font-medium"> Ready in 24-48 hours.</span>
+              {t("hero.subtitle")}
+              <span className="text-foreground font-medium"> {t("hero.subtitleBold")}</span>
             </p>
           </div>
 
@@ -45,7 +47,7 @@ export function HeroSection() {
                 size="lg" 
                 className="bg-gradient-youtube hover:shadow-glow transition-all duration-300 transform hover:scale-105 font-semibold text-lg px-8 py-4"
               >
-                Start Your Project
+                {t("hero.cta.primary")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -56,7 +58,7 @@ export function HeroSection() {
                 className="font-semibold text-lg px-8 py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in"
               >
                 <Play className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                Watch My Intro
+                {t("hero.cta.secondary")}
               </Button>
             </Link>
             <Link to="/portfolio">
@@ -66,7 +68,7 @@ export function HeroSection() {
                 className="border-2 border-youtube-red text-youtube-red hover:bg-youtube-red hover:text-white font-semibold text-lg px-8 py-4 transition-smooth"
               >
                 <Play className="mr-2 h-5 w-5" />
-                Watch Portfolio
+                {t("hero.cta.portfolio")}
               </Button>
             </Link>
           </div>
@@ -75,19 +77,19 @@ export function HeroSection() {
           <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
             <div className="text-center">
               <div className="text-2xl font-bold text-foreground">500+</div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
+              <div className="text-sm text-muted-foreground">{t("hero.stat.clients")}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-foreground">24-48h</div>
-              <div className="text-sm text-muted-foreground">Delivery Time</div>
+              <div className="text-sm text-muted-foreground">{t("hero.stat.delivery")}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-foreground">99%</div>
-              <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
+              <div className="text-sm text-muted-foreground">{t("hero.stat.satisfaction")}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-foreground">5.0★</div>
-              <div className="text-sm text-muted-foreground">Average Rating</div>
+              <div className="text-sm text-muted-foreground">{t("hero.stat.rating")}</div>
             </div>
           </div>
         </div>
